@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+	<title>{{ metadata.title }}</title>
+	<subtitle>{{ metadata.subtitle }}</subtitle>
+	<link href="{{ metadata.site_root }}/{{ metadata.file_name }}" rel="self" />
+	<link href="{{ metadata.site_root }}" />
+	<id>urn:uuid:{{ metadata.uuid }}</id>
+	<updated>{{ get_time_iso8601(metadata['build-time']) }}</updated>
+
+	{% set posts = get_file_list('blog_posts/*.cont') %}
+	{% for post in posts %}
+	{% set post_meta = get_file_metadata(post['file_path']) %}
+	<entry>
+		<title>{{ post_meta.title }}</title>
+		<link href="{{ metadata.site_root }}/{{post_meta.file_path}}" />
+		<id>urn:uuid:{{ post_meta.uuid }}</id>
+		<updated>{{ get_time_iso8601(post_meta.stat.mtime) }}</updated>
+		<summary>{{post_meta.summary }}</summary>
+		<!-- this would be the snippet, more than summary chunk -->
+		<!-- <content type="xhtml"> -->
+		<!-- 	<div xmlns="http://www.w3.org/1999/xhtml"> -->
+		<!-- 		<p>{{ post_meta.summary }}</p> -->
+		<!-- 	</div> -->
+		<!-- </content> -->
+		<author>
+			<name>{{ post_meta.author }}</name>
+			<email>{{ post_meta.author_email }}</email>
+		</author>
+	</entry>
+	{% endfor %}
+</feed>

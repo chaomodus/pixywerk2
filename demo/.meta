@@ -1,0 +1,7 @@
+{
+"site_root":"https://example.com",
+"title":"Test Metadata",
+"author": "Test User",
+"author_email": "test_user@example.com",
+"uuid_oid_root": "pixywerk-demo"
+}

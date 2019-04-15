@@ -1,0 +1,19 @@
+<h1>Index of all content</h1>
+{% for f in get_file_list('*', sort_order='file_name') %}
+<a href="{{ get_file_name(f['file_name']) }}">{{get_file_name(f['file_name'])}}</a>
+{% endfor %}
+
+<p>Including foo.cont.meta:
+<pre>
+{{ get_file_content('foo.cont.meta') }}
+</pre>
+</p>
+
+<h1>Metadata</h1>
+<table class="metadata">
+<tr><th>key</th><th>value</th></tr>
+{% set metadata = get_file_metadata('foo.cont') %}
+{% for k in metadata.keys() %}
+<tr><td>{{k}}</td><td>{{metadata[k]}}</td></tr>
+{% endfor %}
+</table>

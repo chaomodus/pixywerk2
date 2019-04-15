@@ -1,0 +1,104 @@
+# Default: output == input
+default:
+    extension: default
+    chain:
+        - passthrough
+
+# Any object that needs jinja scripts but no other explicit processing
+templatable:
+    extension: null
+    chain:
+        - jinja2
+
+# Markdown, BBCode and RST are first run through the templater, and then
+# they are processed into HTML, and finally embedded in a page template.
+markdown:
+    extension:
+        - md
+    chain:
+        - jinja2
+        - process_md
+        - jinja2_page_embed
+bbcode:
+    extension:
+        - bb
+        - pp
+    chain:
+        - jinja2
+        - process_pp
+        - jinja2_page_embed
+# FIXME implement RST processor
+# restructured:
+#     extension:
+#         - rst
+#     chain:
+#         - jinja2
+#         - process_rst
+#         - jinja2_page_embed
+
+# # JSON and YAML are split, passed through a pretty printer, and then output
+# FIXME implement split chain processor, implement processor arguments
+# json:
+#     extension:
+#         - json
+#     chain:
+#         - split (passthrough)
+#         - pp_json
+# yaml:
+#     extension:
+#         - yml
+#         - yaml
+#     chain:
+#         - split (passthrough)
+#         - pp_yaml
+
+# Template-html is first passed through the templater, and then embedded
+# in a page template
+template-html:
+    extension:
+        - thtml
+        - cont
+    chain:
+        - jinja2
+        - jinja2_page_embed
+
+# Smart CSS are simply converted to CSS.
+sass:
+    extension:
+        - sass
+        - scss
+    chain:
+        - process_sass
+less:
+    extension:
+        - less
+    chain:
+        - process_less
+
+stylus:
+    extension:
+        - styl
+    chain:
+        - process_styl
+
+# # Images are processed into thumbnails and sized in addition to being retained as their original
+# FIXME implement split chain processor, implement processor arguments,
+# image:
+#     extension:
+#         - jpg
+#         - jpeg
+#         - png
+#     chain:
+#         - split (image_bigthumb)
+#         - split (image_smallthumb)
+#         - passthrough
+
+# image_bigthumb:
+#     extension:
+#     chain:
+#         - smart_resize (big)
+
+# image_smallthumb:
+#     extension:
+#     chain:
+#         - smart_resize (small)
