@@ -1,7 +1,7 @@
 """Package configuration."""
 from setuptools import find_packages, setup
 
-LONG_DESCRIPTION = """Pixywerk 2 is a DWIM filesystem based static site generator."""
+LONG_DESCRIPTION = """Pixywerk 2 is a filesystem based static site generator."""
 
 INSTALL_REQUIRES = ["yaml-1.3", "markdown", "jstyleson", "jinja2"]
 
@@ -37,7 +37,7 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    description="A filesystem-based DWIM website generator / CMS",
+    description="A filesystem-based website generator / CMS",
     # entry_points={
     #    'console_scripts': [
     #        'cookbook = spicerack.cookbook:main',
@@ -45,7 +45,7 @@ setup(
     # },
     extras_require=EXTRAS_REQUIRE,
     install_requires=INSTALL_REQUIRES,
-    keywords=["wmf", "automation", "orchestration"],
+    keywords=["cms", "website", "compiler"]
     license="MIT",
     long_description=LONG_DESCRIPTION,
     name="pixywerk2",  # Must be the same used for __version__ in __init__.py
