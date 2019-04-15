@@ -2,8 +2,7 @@
 
 ## FORMAT ##
 
-Metadata shall be stored in json files. It shall take the form of a top-level dictionary, with each key being an item of metadata. Heirarchical metadata
-and types are preserved and explitily allowed.
+Metadata is stored as a JSON file which allows C-likecomments.
 
 Metadata is loaded from the top down, so each parent from the root can impart metadata on children. Children can explitily nullify parent metadata by
 assigning it to undefined.
@@ -16,29 +15,51 @@ On-disk meatdata is stored as a file along side the non-metadata file with the e
 
 All files define the following keys by default:
 
-filename
+file_name
 :  The local path of the file
-path
+file_path
 :  The full path to the file from the root
-type
+dir
+:  The directory to the path from root for this file
+os-path
+:  The native OS path to this file
+guessed-type
 :  The guessed mime-type of the file
 stat
 :  A tree of stat() values in a dictionary, without the ST_ prefix, and with lowercase keys.
+templates
+:  The path to the template files.
+uuid
+:  A UUID for this file based on its path and a specified `uuid-oid-root` metadata
+build-time
+:  The time stamp for the build time
 
-Most files will want to define these keys:
+Files can also explicitly override these which are set to empty defaults:
 
+mime-type
+:  Either the specified mime-type or guessed type if undefined.
 template
 :  The full path to the template file
-template-fs
+dir-template
 :  The full path to the filesystem template
 title
 :  A title for this object derived from the template, metadata or other sources.
+summary
+:  A summary of the file contents.
 description
-:  A description of this file.
+:  A description of file contents.
 
-## METAMETADATA ##
+Trees have some metadata that projects should probably override (generally in their top-level .meta):
 
-Some keys support metadata replacement, such as title, description, template and type. The metadata becomes a micro template which allows some template functions to occur at load time based on existing / default metadata.
+uuid-oid-root
+:  A string added to the beginning of the path that identifies this site, used for deriving OID UUIDs.
+author
+:  The full name of the author of this site (should also be overridden per-file if necessary).
+author_email
+:  The email of the author of this site (see above)
+site_root
+:  The full URL for the root of this web site used for links and whatnot, with ending slash.
+
 
 ## CACHING STRATEGY ##
 
