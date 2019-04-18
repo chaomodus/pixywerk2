@@ -6,6 +6,8 @@ project_top/
    Makefile              - Convenient for building your site
    src/                  - All "source" pages are contained in here.
      .meta               - Top-level default metadata is set here
+	 index.cont          - The content part of the index page
+	 index.cont.meta     - A metadata json file for the index, specifically.
      templates/          - Templates go in here
        default.jinja2    - Default template that will be used if none are specified
    publish/              - The path the build process will create, where the post-processed files go.
