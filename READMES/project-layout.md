@@ -55,7 +55,7 @@ A simple default.jinja2 example:
 <!DOCTYPE html>
 <html>
 <head>
-<title>{{ title }}</title>
+<title>{{ metadata.title }}</title>
 </head>
 <body>
 {{content}}
