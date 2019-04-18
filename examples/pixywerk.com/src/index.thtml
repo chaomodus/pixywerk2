@@ -1,0 +1,5 @@
+<p>This is my index!!</p>
+
+for i in posts[:5]:
+
+get metadata, fill in post image/text summary with link

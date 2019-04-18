@@ -2,7 +2,7 @@
 
 import os
 
-from .processors import Processor
+from .processors import Processor, PassthroughException
 from ..utils import guess_mime
 from typing import Iterable, Optional, Dict, cast
 
@@ -49,7 +49,7 @@ class PassThrough(Processor):
         Returns:
             iterable: The post-processed output stream
         """
-        return input_file
+        raise PassthroughException("passthrough")
 
     def extension(self, oldname: str, ctx: Optional[Dict] = None) -> str:
         """Return the mimetype of the post-processed file.

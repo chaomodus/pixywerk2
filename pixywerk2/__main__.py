@@ -8,12 +8,14 @@
 import argparse
 import logging
 import os
+import shutil
 import sys
 import time
 
 from typing import Dict, List, cast
 
 from .processchain import ProcessorChains
+from .processors.processors import PassthroughException
 from .metadata import MetaTree
 from .template_tools import file_list, file_name, file_content, file_metadata, time_iso8601
 
@@ -73,8 +75,11 @@ def main() -> int:
         "dir-template": "default-dir.jinja2",
         "filters": {},
         "build-time": time.time(),
-        "build-datetime": time.ctime(),
         "uuid-oid-root": "pixywerk",
+        "summary": "",
+        "description": "",
+        "author": "",
+        "author_email": ""
     }
     meta_tree = MetaTree(args.root, default_metadata)
     file_list_cache = cast(Dict, {})
@@ -109,9 +114,13 @@ def main() -> int:
             chain = process_chains.get_chain_for_filename(os.path.join(root, f), ctx=metadata)
             print("process {} -> {}".format(os.path.join(root, f), os.path.join(target_dir, chain.output_filename)))
             if not args.dry_run:
-                with open(os.path.join(target_dir, chain.output_filename), "w") as outfile:
-                    for line in chain.output:
-                        outfile.write(line)
+                try:
+                    with open(os.path.join(target_dir, chain.output_filename), "w") as outfile:
+                        for line in chain.output:
+                            outfile.write(line)
+                except PassthroughException:
+                    shutil.copyfile(os.path.join(root, f), os.path.join(target_dir, chain.output_filename))
+
     return 0
 
 

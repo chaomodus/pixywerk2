@@ -43,12 +43,13 @@ setup(
     #        'cookbook = spicerack.cookbook:main',
     #    ],
     # },
+    include_package_data=True,
     extras_require=EXTRAS_REQUIRE,
     install_requires=INSTALL_REQUIRES,
-    keywords=["cms", "website", "compiler"]
+    keywords=["cms", "website", "compiler"],
     license="MIT",
     long_description=LONG_DESCRIPTION,
-    name="pixywerk2",  # Must be the same used for __version__ in __init__.py
+    name="pixywerk2",
     packages=find_packages(exclude=["*.tests", "*.tests.*"]),
     platforms=["GNU/Linux"],
     setup_requires=SETUP_REQUIRES,

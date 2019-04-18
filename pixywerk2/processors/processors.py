@@ -3,6 +3,10 @@ import abc
 from typing import Iterable, Optional, Dict
 
 
+class PassthroughException(Exception):
+    """Raised when the processor would like the file to pass through unchanged."""
+
+
 class ProcessorException(Exception):  # pragma: no cover
     """A base exception class to be used by processor objects."""
 
