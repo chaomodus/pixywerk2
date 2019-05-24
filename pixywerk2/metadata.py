@@ -1,5 +1,6 @@
 """Constructs a tree-like object containing the metadata for a given path, and caches said metadata."""
 
+import fnmatch
 import logging
 import mimetypes
 import os
@@ -108,11 +109,15 @@ m        load .meta (JSON formatted dictionary) for that level, and
         # iterate path components from root to target path
         comps = [self._root] + rel_path.split("/")
         fullpath = ""
+        ospath = os.path.join(self._root, rel_path)
         for pth in comps:
             fullpath = os.path.join(fullpath, pth)
             st = os.stat(fullpath)
 
-            cachekey = fullpath + ".meta"
+            if os.path.isdir(fullpath):
+                cachekey = os.path.join(fullpath, ".meta")
+            else:
+                cachekey = fullpath + ".meta"
             meta = cast(Dict, {})
             try:
                 st_meta = os.stat(cachekey)
@@ -126,16 +131,20 @@ m        load .meta (JSON formatted dictionary) for that level, and
                 meta = jstyleson.load(open(cachekey, "r"))
                 self._cache.put(cachekey, meta, st_meta.st_mtime)
 
+            if fullpath == ospath and "wildcard_metadata" in metablob:
+                for wild in metablob["wildcard_metadata"]:
+                    if fnmatch.fnmatch(pth, wild[0]):
+                        metablob.update(wild[1])
+
             metablob.update(meta)
 
         # return final dict
         metablob["dir"], metablob["file_name"] = os.path.split(rel_path)
         metablob["file_path"] = rel_path
-        metablob["uuid"] = uuid.uuid3(
-            uuid.NAMESPACE_OID, metablob["uuid-oid-root"] + os.path.join(self._root, rel_path)
-        )
+        metablob["relpath"] = os.path.relpath("/", "/" + metablob["dir"])
+        metablob["uuid"] = uuid.uuid3(uuid.NAMESPACE_OID, metablob["uuid-oid-root"] + ospath)
         metablob["os-path"], _ = os.path.split(fullpath)
-        metablob["guessed-type"] = guess_mime(os.path.join(self._root, rel_path))
+        metablob["guessed-type"] = guess_mime(ospath)
         if "mime-type" not in metablob:
             metablob["mime-type"] = metablob["guessed-type"]
         metablob["stat"] = {}

@@ -51,6 +51,14 @@ def file_name(root: str, metatree: MetaTree, processor_chains: ProcessorChains, 
 
     return get_file_name
 
+def file_raw(root: str, contcache: Dict) -> Callable:
+    def get_raw(file_name: str) -> str:
+        if file_name in contcache:
+            return contcache[file_name]
+        with open(os.path.join(root, file_name), 'r', encoding="utf-8") as f:
+            return f.read()
+
+    return get_raw
 
 def file_content(root: str, metatree: MetaTree, processor_chains: ProcessorChains, contcache: Dict) -> Callable:
     def get_file_content(file_name: str) -> Iterable:
@@ -59,7 +67,7 @@ def file_content(root: str, metatree: MetaTree, processor_chains: ProcessorChain
         metadata = metatree.get_metadata(file_name)
         chain = processor_chains.get_chain_for_filename(os.path.join(root, file_name), ctx=metadata)
         contcache[file_name] = chain.output
-        return chain.output
+        return unicode(chain.output)
 
     return get_file_content
 

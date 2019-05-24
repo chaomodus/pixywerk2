@@ -17,8 +17,8 @@ from typing import Dict, List, cast
 from .processchain import ProcessorChains
 from .processors.processors import PassthroughException
 from .metadata import MetaTree
-from .template_tools import file_list, file_name, file_content, file_metadata, time_iso8601
-
+from .template_tools import file_list, file_name, file_content, file_metadata, time_iso8601, file_raw
+from .pygments import pygments_get_css, pygments_markup_contents_html
 
 logger = logging.getLogger()
 
@@ -79,18 +79,22 @@ def main() -> int:
         "summary": "",
         "description": "",
         "author": "",
-        "author_email": ""
+        "author_email": "",
     }
     meta_tree = MetaTree(args.root, default_metadata)
     file_list_cache = cast(Dict, {})
     file_cont_cache = cast(Dict, {})
     file_name_cache = cast(Dict, {})
+    file_raw_cache = cast(Dict, {})
     default_metadata["globals"] = {
         "get_file_list": file_list(args.root, file_list_cache),
         "get_file_name": file_name(args.root, meta_tree, process_chains, file_name_cache),
         "get_file_content": file_content(args.root, meta_tree, process_chains, file_cont_cache),
+        "get_raw": file_raw(args.root, file_raw_cache),
         "get_file_metadata": file_metadata(meta_tree),
         "get_time_iso8601": time_iso8601("UTC"),
+        "pygments_get_css": pygments_get_css,
+        "pygments_markup_contents_html": pygments_markup_contents_html,
     }
 
     for root, _, files in os.walk(args.root):

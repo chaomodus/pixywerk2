@@ -15,6 +15,8 @@ On-disk meatdata is stored as a file along side the non-metadata file with the e
 
 All files define the following keys by default:
 
+relpath
+:  The relative path to the root of the site, useful for prepending to image `src=` and other resource paths such as CSS files and fonts in order to maintain locally viewable output.
 file_name
 :  The local path of the file
 file_path
@@ -59,6 +61,14 @@ author_email
 :  The email of the author of this site (see above)
 site_root
 :  The full URL for the root of this web site used for links and whatnot, with ending slash.
+
+Special Keys that can be defined, these change the processing in predictable ways:
+
+type
+: Define that the file that this metadata is applied to as a specific type from the type mapping table. Useful values are `passthrough` and `templatable` with obvious outcomes.
+wildcard_metadata
+: Define a dictionary of file globs (patterns which match files such as `*.txt`), with the value being a dictionary of additional metadata to apply to the matched files. This is generally
+defined at the top level of the project to make certain file patterns treated as special without having to give them their own metadata.
 
 
 ## CACHING STRATEGY ##

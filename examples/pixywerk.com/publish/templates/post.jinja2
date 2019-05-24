@@ -1,0 +1,23 @@
+{% extends "default.jinja2" %}
+{% block headertitle %}
+  Pixywerk
+{% endblock %}
+{% block content %}
+  <article class="post">
+    <div class="featured">
+      <h1>{{ metadata.title }}</h1>
+      <img src="{{metadata.relpath}}/{{metadata.featured}}" class="featured">
+    </div>
+  <div class="byline">
+  <p>Author: {{ metadata.author }}<br>
+    Published: {{ get_time_iso8601(metadata.stat.ctime) }}
+    {% if metadata.stat.mtime-metadata.stat.ctime > 512 %}
+      Updated: {{ get_time_iso8601(metadata.stat.mtime) }}
+    {% endif %}
+  </p>
+  </div>
+  <div class="article">
+    {{content}}
+  </div>
+  </article>
+{% endblock %}

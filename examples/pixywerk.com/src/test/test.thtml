@@ -1,0 +1,2 @@
+{{metadata.dir}} {{metadata.file_path}} {{metadata.os_path}}
+<img src="{{metadata.relpath}}/images/pipe-leak.svg">

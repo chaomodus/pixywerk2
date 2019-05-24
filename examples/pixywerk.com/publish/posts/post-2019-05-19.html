@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <title>Pixywerk2 Code Test Post</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+  </head>
+  <body>
+    <div class="container">
+      
+	<header><img src="../images/pipe-leak.svg" style="filter: invert(1); height: 2em; float: left; margin: 2px; padding: 0"><h1>
+  Pixywerk
+</h1></header>
+      
+       
+  <article class="post">
+    <div class="featured">
+      <h1>Code Test Post</h1>
+      <img src="../images/2019-05-19.png" class="featured">
+    </div>
+  <div class="byline">
+  <p>Author: Cas Rusnov<br>
+    Published: 2019-05-20T06:31:37.352443+00:00
+    
+  </p>
+  </div>
+  <div class="article">
+    
+<p>This is a code test post! Let's format some code!!</p>
+
+
+<div class="code">
+Some python code:
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Package configuration.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">find_packages</span><span class="p">,</span> <span class="n">setup</span>
+
+<span class="n">LONG_DESCRIPTION</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Pixywerk 2 is a filesystem based static site generator.&quot;&quot;&quot;</span>
+
+<span class="n">INSTALL_REQUIRES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;yaml-1.3&quot;</span><span class="p">,</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;jstyleson&quot;</span><span class="p">,</span> <span class="s2">&quot;jinja2&quot;</span><span class="p">,</span> <span class="s2">&quot;pygments&quot;</span><span class="p">]</span>
+
+<span class="c1"># Extra dependencies</span>
+<span class="n">EXTRAS_REQUIRE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Test dependencies</span>
+    <span class="s2">&quot;tests&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bandit&gt;=1.1.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;flake8&gt;=3.2.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mypy&gt;=0.470&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;prospector[with_everything]&gt;=0.12.4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pytest-cov&gt;=1.8.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pytest-xdist&gt;=1.15.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pytest&gt;=3.0.3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sphinx_rtd_theme&gt;=0.1.6&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sphinx-argparse&gt;=0.1.15&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Sphinx&gt;=1.4.9&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">SETUP_REQUIRES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pytest-runner&gt;=2.7.1&quot;</span><span class="p">,</span> <span class="s2">&quot;setuptools_scm&gt;=1.15.0&quot;</span><span class="p">]</span>
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Cassowary Rusnov&quot;</span><span class="p">,</span>
+    <span class="n">author_email</span><span class="o">=</span><span class="s2">&quot;rusnovn@gmail.com&quot;</span><span class="p">,</span>
+    <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Development Status :: 1 - Pre-alpha&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Environment :: Console&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;License :: OSI Approved :: MIT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Operating System :: POSIX :: Linux&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Programming Language :: Python :: 3.6&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Programming Language :: Python :: 3.7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Programming Language :: Python :: 3 :: Only&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Topic :: Software Development :: Libraries :: Python Modules&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A filesystem-based website generator / CMS&quot;</span><span class="p">,</span>
+    <span class="c1"># entry_points={</span>
+    <span class="c1">#    &#39;console_scripts&#39;: [</span>
+    <span class="c1">#        &#39;cookbook = spicerack.cookbook:main&#39;,</span>
+    <span class="c1">#    ],</span>
+    <span class="c1"># },</span>
+    <span class="n">include_package_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">extras_require</span><span class="o">=</span><span class="n">EXTRAS_REQUIRE</span><span class="p">,</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="n">INSTALL_REQUIRES</span><span class="p">,</span>
+    <span class="n">keywords</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cms&quot;</span><span class="p">,</span> <span class="s2">&quot;website&quot;</span><span class="p">,</span> <span class="s2">&quot;compiler&quot;</span><span class="p">],</span>
+    <span class="n">license</span><span class="o">=</span><span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+    <span class="n">long_description</span><span class="o">=</span><span class="n">LONG_DESCRIPTION</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pixywerk2&quot;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*.tests&quot;</span><span class="p">,</span> <span class="s2">&quot;*.tests.*&quot;</span><span class="p">]),</span>
+    <span class="n">platforms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GNU/Linux&quot;</span><span class="p">],</span>
+    <span class="n">setup_requires</span><span class="o">=</span><span class="n">SETUP_REQUIRES</span><span class="p">,</span>
+    <span class="n">use_scm_version</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://git.antpanethon.com/cas/pixywerk2&quot;</span><span class="p">,</span>
+    <span class="n">zip_safe</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+</div>
+  </div>
+  </article>
+
+       
+	 <nav><ul>
+	     <li>Documentation</li>
+	     <li>Blog</li>
+	     <li><a href="https://git.antpantheon.com/cas/pixywerk2">Gitea<img src="../images/link-box-variant.svg"></a></li>
+	     <li><a href="https://www.github.com/chaomodus/pixywerk2">Github<img src="../images/link-box-variant.svg"></a></li>
+	 </ul></nav>
+       
+       
+	 <footer>Copyright &copy; 2019 by Cas Rusnov <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+	 </footer>
+       
+    </div>
+  </body>
+</html>

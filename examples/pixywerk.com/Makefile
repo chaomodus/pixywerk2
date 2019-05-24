@@ -1,2 +1,2 @@
-build: src/templates/* src/* src/images/* src/posts/*
+build: src/templates/* src/* src/images/*
 	python -mpixywerk2 src publish

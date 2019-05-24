@@ -1,0 +1,8 @@
+
+<p>This is a code test post! Let's format some code!!</p>
+
+
+<div class="code">
+Some python code:
+{{ pygments_markup_contents_html(get_raw("setup.py"), "Python", "emacs") }}
+</div>

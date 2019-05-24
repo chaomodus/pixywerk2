@@ -1,9 +1,30 @@
 <html>
   <head>
-    <title>{{ metadata.title }}</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>Pixywerk2 {{ metadata.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{metadata.relpath}}/css/main.css">
   </head>
   <body>
-    {{ content }}
+    <div class="container">
+      {% block header %}
+	<header><img src="{{metadata.relpath}}/images/pipe-leak.svg" style="filter: invert(1); height: 2em; float: left; margin: 2px; padding: 0"><h1>{% block headertitle %}Pixywerk2 {{ metadata.title }}{% endblock %}</h1></header>
+      {% endblock %}
+       {% block content %}
+	 <article>
+	   {{ content }}
+	 </article>
+       {% endblock %}
+       {% block nav %}
+	 <nav><ul>
+	     <li>Documentation</li>
+	     <li>Blog</li>
+	     <li><a href="https://git.antpantheon.com/cas/pixywerk2">Gitea<img src="{{metadata.relpath}}/images/link-box-variant.svg"></a></li>
+	     <li><a href="https://www.github.com/chaomodus/pixywerk2">Github<img src="{{metadata.relpath}}/images/link-box-variant.svg"></a></li>
+	 </ul></nav>
+       {% endblock %}
+       {% block footer %}
+	 <footer>Copyright &copy; 2019 by Cas Rusnov <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+	 </footer>
+       {% endblock %}
+    </div>
   </body>
 </html>

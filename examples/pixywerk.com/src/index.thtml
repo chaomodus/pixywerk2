@@ -1,5 +1,13 @@
-<p>This is my index!!</p>
-
-for i in posts[:5]:
-
-get metadata, fill in post image/text summary with link
+<h1>Pixywerk 2</h1>
+<p>Pixywerk 2 is a simple static website compiler. It is primarily oriented around applying a tree-oriented metadata to each file, and complicated operations within the page templates.</p>
+<h2>Latest blog posts</h2>
+<div class="postgrid">
+{% for f in get_file_list('posts/*', sort_order='file_name', reverse=True) %}
+<div class="postgrid-item">
+{% set metadata = get_file_metadata("posts/"+f['file_name']) %}
+<a href="posts/{{ get_file_name("posts/"+f['file_name']) }}">
+<img src="{{metadata.featured}}" class="featured">
+<div>{{metadata.title}}</div></a>
+</div>
+{% endfor %}
+</div>

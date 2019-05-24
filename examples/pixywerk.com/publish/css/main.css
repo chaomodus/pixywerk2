@@ -1,3 +1,344 @@
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-Bold.woff2') format('woff2'),
+         url('fonts/ExpletusSans-Bold.woff') format('woff');
+    font-style: regular;
+    font-weight: 700;
+}
 
 
-body { margin: 10% 10% 0 10% }
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-BoldItalic.woff2') format('woff2'),
+         url('fonts/ExpletusSans-BoldItalic.woff') format('woff');
+    font-style: italic;
+    font-weight: 700;
+}
+
+
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-Italic.woff2') format('woff2'),
+         url('fonts/ExpletusSans-Italic.woff') format('woff');
+    font-style: italic;
+    font-weight: 400;
+}
+
+
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-Medium.woff2') format('woff2'),
+         url('fonts/ExpletusSans-Medium.woff') format('woff');
+    font-style: regular;
+    font-weight: 500;
+}
+
+
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-MediumItalic.woff2') format('woff2'),
+         url('fonts/ExpletusSans-MediumItalic.woff') format('woff');
+    font-style: italic;
+    font-weight: 500;
+}
+
+
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-Regular.woff2') format('woff2'),
+         url('fonts/ExpletusSans-Regular.woff') format('woff');
+    font-style: regular;
+    font-weight: 400;
+}
+
+
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-SemiBold.woff2') format('woff2'),
+         url('fonts/ExpletusSans-SemiBold.woff') format('woff');
+    font-style: regular;
+    font-weight: 600;
+}
+
+
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('fonts/ExpletusSans-SemiBoldItalic.woff2') format('woff2'),
+         url('fonts/ExpletusSans-SemiBoldItalic.woff') format('woff');
+    font-style: italic;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Teko';
+    src: url('fonts/Teko-Bold.woff2') format('woff2'),
+         url('fonts/Teko-Bold.woff') format('woff');
+    font-style: regular;
+    font-weight: 700;
+}
+
+
+@font-face {
+    font-family: 'Teko Light';
+    src: url('fonts/Teko-Light.woff2') format('woff2'),
+         url('fonts/Teko-Light.woff') format('woff');
+    font-style: regular;
+    font-weight: 300;
+}
+
+
+@font-face {
+    font-family: 'Teko Medium';
+    src: url('fonts/Teko-Medium.woff2') format('woff2'),
+         url('fonts/Teko-Medium.woff') format('woff');
+    font-style: regular;
+    font-weight: 500;
+}
+
+
+@font-face {
+    font-family: 'Teko';
+    src: url('fonts/Teko-Regular.woff2') format('woff2'),
+         url('fonts/Teko-Regular.woff') format('woff');
+    font-style: regular;
+    font-weight: 400;
+}
+
+
+@font-face {
+    font-family: 'Teko SemiBold';
+    src: url('fonts/Teko-SemiBold.woff2') format('woff2'),
+         url('fonts/Teko-SemiBold.woff') format('woff');
+    font-style: regular;
+    font-weight: 600;
+}
+
+body { margin: 0; font-family: Teko; font-size: 24pt; }
+h1, h2, h3, h4 { font-family: 'Expletus Sans'; font-weight: 700 }
+h1 { font-size: 150%; border-bottom: solid 1px black; }
+h2 { font-size: 125%; }
+h3 { font-size: 115%; }
+h4 { font-size: 100%; }
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 220px auto auto;
+    grid-template-rows: auto auto auto auto;
+}
+
+header {
+    border: 0;
+    padding-left: 20px;
+    height: 60px;
+    grid-column: 1 / 4;
+    background: black;
+    color: white;
+}
+
+header h1 { font-size: 18pt; border: none}
+
+nav {
+  grid-row: 2 / 5;
+  grid-column: 1;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    list-style-type: none;
+    padding: 1px 20px 1px 20px;
+}
+
+nav ul li:hover {
+    background: black;
+    color: white;
+}
+
+nav ul li:hover img {
+    filter: invert(1);
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+nav ul li:hover a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+nav ul li a:visited {
+    color: inherit;
+}
+
+article {
+  grid-row: 2 / 5;
+  grid-column: 2 / 4;
+  margin: 0 20px 0 20px;
+}
+
+footer {
+    font-size: 12pt;
+    grid-column: 1 / 4;
+    grid-row: 5;
+    background: black;
+    color: white;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.post div.featured {
+    max-height: 250px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.post div.featured img.featured {
+    max-width: initial;
+    width: 100%;
+}
+
+.post div.featured h1 {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    color: white;
+    border: 0;
+    padding: 10px 30px 10px 30px;
+    background: rgba(0,0,0,0.5);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-variant: small-caps;
+}
+
+.post div.byline {
+    margin-left: 30px;
+    font-size: 0.75em;
+    line-height: 0.75em;
+}
+
+.post div.article {
+    margin-left: 30Px;
+}
+
+.post div.article p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.postgrid {
+    display: grid;
+    grid-template-columns: minmax(300px, 33%) minmax(300px, 33%) minmax(300px, 33%);
+    margin-bottom: 30px;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.postgrid-item {
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.postgrid-item a img.featured {
+    max-width: 100%;
+}
+
+
+.postgrid-item a div {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: white;
+    border: 0;
+    padding: 10px 30px 10px 30px;
+    background: rgba(0,0,0,0.5);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-variant: small-caps;
+}
+
+.hll { background-color: #ffffcc }
+.c { color: #008800; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #AA22FF; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #008800; font-style: italic } /* Comment.Hashbang */
+.cm { color: #008800; font-style: italic } /* Comment.Multiline */
+.cp { color: #008800 } /* Comment.Preproc */
+.cpf { color: #008800; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #008800; font-style: italic } /* Comment.Single */
+.cs { color: #008800; font-weight: bold } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #AA22FF; font-weight: bold } /* Keyword.Constant */
+.kd { color: #AA22FF; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #AA22FF; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #AA22FF } /* Keyword.Pseudo */
+.kr { color: #AA22FF; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #00BB00; font-weight: bold } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BB4444 } /* Literal.String */
+.na { color: #BB4444 } /* Name.Attribute */
+.nb { color: #AA22FF } /* Name.Builtin */
+.nc { color: #0000FF } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #00A000 } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #B8860B } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BB4444 } /* Literal.String.Affix */
+.sb { color: #BB4444 } /* Literal.String.Backtick */
+.sc { color: #BB4444 } /* Literal.String.Char */
+.dl { color: #BB4444 } /* Literal.String.Delimiter */
+.sd { color: #BB4444; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BB4444 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BB4444 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BB4444 } /* Literal.String.Single */
+.ss { color: #B8860B } /* Literal.String.Symbol */
+.bp { color: #AA22FF } /* Name.Builtin.Pseudo */
+.fm { color: #00A000 } /* Name.Function.Magic */
+.vc { color: #B8860B } /* Name.Variable.Class */
+.vg { color: #B8860B } /* Name.Variable.Global */
+.vi { color: #B8860B } /* Name.Variable.Instance */
+.vm { color: #B8860B } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+div.code {
+    font-size: 0.5em;
+    border: 1px black solid;
+    padding: 1em;
+    margin: 0 1em 0 1em;
+}
