@@ -1,9 +1,6 @@
 # TODO #
 
-* Pygments pretty printing of source code et al. including exposing that to the template API (`pygment_format(get_file_content('whatever.py'))`).
 * Smart CSS things (fill in the processors)
 * Project global defines, parameters.
-
-# Maybe #
-
+* pre- and post-scripts that will be run from __main__, either some shipped with pixywerk or project-level.
 * Library of template modules? ATOM et al.

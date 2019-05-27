@@ -22,7 +22,7 @@ class Jinja2(PassThrough):
             iterable: The post-processed output stream
         """
         ctx = cast(Dict, ctx)
-        template_env = Environment(loader=FileSystemLoader(ctx["templates"]))
+        template_env = Environment(loader=FileSystemLoader(ctx["templates"]), extensions=['jinja2.ext.do'])
         template_env.globals.update(ctx["globals"])
         template_env.filters.update(ctx["filters"])
         tmpl = template_env.from_string("".join([x for x in input_file]))

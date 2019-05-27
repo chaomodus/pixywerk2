@@ -86,3 +86,11 @@ def time_iso8601(timezone: str) -> Callable:
         return datetime.datetime.fromtimestamp(time_t, tz).isoformat("T")
 
     return get_time_iso8601
+
+def date_iso8601(timezone: str) -> Callable:
+    tz = pytz.timezone(timezone)
+
+    def get_date_iso8601(time_t: Union[int, float]) -> str:
+        return datetime.datetime.fromtimestamp(time_t, tz).strftime('%Y-%m-%d')
+
+    return get_date_iso8601

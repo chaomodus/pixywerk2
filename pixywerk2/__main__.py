@@ -17,7 +17,7 @@ from typing import Dict, List, cast
 from .processchain import ProcessorChains
 from .processors.processors import PassthroughException
 from .metadata import MetaTree
-from .template_tools import file_list, file_name, file_content, file_metadata, time_iso8601, file_raw
+from .template_tools import date_iso8601, file_list, file_name, file_content, file_metadata, time_iso8601, file_raw
 from .pygments import pygments_get_css, pygments_markup_contents_html
 
 logger = logging.getLogger()
@@ -41,7 +41,8 @@ def get_args(args: List[str]) -> argparse.Namespace:
     parser.add_argument("-d", "--dry-run", help="Perform a dry-run.", action="store_true")
     parser.add_argument("-v", "--verbose", help="Output verbosely.", action="store_true")
     parser.add_argument("--processors", help="Specify a path to a processor configuration file.", default=None)
-
+    # parser.add_argument("--prescript", help="Specify one or more prescripts to run (in order specified) with context of the compile.", default=[], action="append")
+    # parser.add_argument("--postscript", help="Specify one or more postsscripts to run (in order specified) with context of the compile.", default=[], action="append")
     result = parser.parse_args(args)
 
     # validate arguments
@@ -93,6 +94,7 @@ def main() -> int:
         "get_raw": file_raw(args.root, file_raw_cache),
         "get_file_metadata": file_metadata(meta_tree),
         "get_time_iso8601": time_iso8601("UTC"),
+        "get_date_iso8601": date_iso8601("UTC"),
         "pygments_get_css": pygments_get_css,
         "pygments_markup_contents_html": pygments_markup_contents_html,
     }
