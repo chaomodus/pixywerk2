@@ -67,7 +67,7 @@ def file_content(root: str, metatree: MetaTree, processor_chains: ProcessorChain
         metadata = metatree.get_metadata(file_name)
         chain = processor_chains.get_chain_for_filename(os.path.join(root, file_name), ctx=metadata)
         contcache[file_name] = chain.output
-        return unicode(chain.output)
+        return str(chain.output)
 
     return get_file_content
 

@@ -62,24 +62,24 @@ template-html:
         - jinja2
         - jinja2_page_embed
 
-# Smart CSS are simply converted to CSS.
-sass:
-    extension:
-        - sass
-        - scss
-    chain:
-        - process_sass
-less:
-    extension:
-        - less
-    chain:
-        - process_less
+# # Smart CSS are simply converted to CSS.
+# sass:
+#     extension:
+#         - sass
+#         - scss
+#     chain:
+#         - process_sass
+# less:
+#     extension:
+#         - less
+#     chain:
+#         - process_less
 
-stylus:
-    extension:
-        - styl
-    chain:
-        - process_styl
+# stylus:
+#     extension:
+#         - styl
+#     chain:
+#         - process_styl
 
 # # Images are processed into thumbnails and sized in addition to being retained as their original
 # FIXME implement split chain processor, implement processor arguments,
